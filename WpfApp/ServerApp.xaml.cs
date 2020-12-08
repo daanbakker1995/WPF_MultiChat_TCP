@@ -47,7 +47,15 @@ namespace WpfApp
                         (message) => AddToChatList(message), () => UpdateBtnServerStart());
                     ServerStarted = true;
                     UpdateBtnServerStart();
-                    Server.StartListening();
+                    try
+                    {
+                        Server.StartListening();
+                    }
+                    catch(Exception exception)
+                    {
+                        AddToChatList(exception.Message);
+                        CloseConnection();
+                    }
                 }
                 else
                 {

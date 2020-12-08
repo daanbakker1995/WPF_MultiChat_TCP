@@ -60,8 +60,7 @@ namespace WpfAppServer
                 TcpListener.BeginAcceptTcpClient(AcceptClients, TcpListener);
             } catch(Exception e)
             {
-                AddMessageToChat($"Server Error: {e.Message}");
-
+                throw new Exception($"Server Error: {e.Message}");
             }
         }
 
@@ -84,7 +83,6 @@ namespace WpfAppServer
                             TcpListener.BeginAcceptTcpClient(AcceptClients, TcpListener);
                             // Receive data on net Taks
                             await Task.Run(() => ReceiveData(tcpClient));
-
                         }
                     }
                     catch (Exception e)
@@ -183,7 +181,6 @@ namespace WpfAppServer
         /// </summary>
         public void CloseServer()
         {
-
             // Send bye to clients and stop the listener
             ServerStarted = false;
             BroadCast("bye",null);
