@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApp.ServerApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Chat Server" FontSize="10" Width="450" Height="370" MinHeight="350" MinWidth="450">
+    <Border Padding="10" Background="#FF222428">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Main -->
+            <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                <!-- Title-->
+                <TextBlock Text="ChatAppServer_" FontWeight="Bold" Margin="0,0,0,5" Foreground="#FFEEEEEE" FontSize="14"/>
+                <!-- ChatList -->
+                <ListBox x:Name="ChatList"  Margin="0 0 0 10" FontSize="8" MinHeight="250" MaxHeight="250" Background="#FFC8C8C8"/>
+                <!-- Input and Button -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Input -->
+                    <TextBox x:Name="InputMessage" Grid.Column="0" Margin="0 0 5 0" Background="#FFC8C8C8"/>
+                    <!-- Button -->
+                    <Button x:Name="BtnSendMessage" Click="BtnSendMessage_Click" Content="Verzenden" Grid.Column="1" Padding="3" Background="#FF323232" Foreground="#FFEEEEEE" BorderBrush="#FF353535"/>
+                </Grid>
+                <!-- Error Message -->
+                <TextBlock x:Name="ErrorTextBlock" Text="" Foreground="#FFF96E6E" Padding="2"/>
+            </StackPanel>
+
+            <!-- Sidebar -->
+            <StackPanel Grid.Column="1" >
+                <!--Server Settings-->
+                <TextBlock Text="INSTELLINGEN" FontWeight="Bold" Margin="0,0,0,5" Foreground="#FFEEEEEE" FontStyle="Normal"/>
+
+                <!-- ServerIP Label-->
+                <Label Content="Server IP" Padding="0 2" Foreground="#FFEEEEEE"/>
+                <!-- ServerIP Input-->
+                <TextBox x:Name="InputServerIP" Text="127.0.0.1" Padding="2" Margin="0,0,0,10" KeyUp="InputServerIP_KeyUp" Background="#FFC8C8C8"/>
+
+                <!-- PortNumber Label-->
+                <Label Content="Port nummer" Padding="0 2" Foreground="#FFEEEEEE"/>
+                <!-- PortNumber Input-->
+                <TextBox x:Name="InputPortNumber" Text="49152" MaxLength="5" Padding="2" Margin="0,0,0,10" KeyUp="InputPortNumber_KeyUp" Background="#FFC8C8C8"/>
+
+                <!-- BufferSize Label-->
+                <Label Content="Buffer grootte" Padding="0 2" Foreground="#FFEEEEEE"/>
+                <!-- BufferSize Input-->
+                <TextBox x:Name="InputBufferSize" Text="1024" Padding="2" Margin="0,0,0,10" KeyUp="InputBufferSize_KeyUp" Background="#FFC8C8C8"/>
+
+                <!-- Start server button -->
+                <Button x:Name="BtnStartServer" Click="BtnStartServer_Click" Content="Starten" Background="#FF323232" Foreground="#FFEEEEEE" BorderBrush="#FF353535" Padding="3" Margin="0,10,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

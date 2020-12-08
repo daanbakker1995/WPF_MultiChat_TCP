@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "WpfAppServer": {
+      "commandName": "Project"
+    }
+  }
+}
